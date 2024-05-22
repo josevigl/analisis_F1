@@ -41,7 +41,7 @@ The main features include:
 
 The dashboard is designed to be user-friendly and intuitive. Typical usage involves:
 
-1. Running the app with `streamlit run app.py`
+1. Running the app with `streamlit run Predicción.py`
 2. Selecting an analysis page from the sidebar
 3. Choosing filters like year, track, driver etc. 
 4. Selecting a chart type and viewing the visualization
