@@ -45,6 +45,39 @@ class AnalisisCircuitos:
         ax.grid(axis='x')
         st.pyplot(fig)
 
+    def graficar_media_y_desviacion(self, data, media, desviacion):
+        st.subheader(f'Media y Desviación Estándar de {media.capitalize()} por Evento')
+        fig, ax = plt.subplots(figsize=(12, len(data["Evento"]) * 0.25))
+        
+        bars_media = ax.barh(data["Evento"], data[media], color='red', label='Media')
+
+        bars_desviacion = ax.barh(data["Evento"], data[desviacion], color='white',  label='Desviación', alpha=0.7)
+
+        for bar in bars_media:
+            width = bar.get_width()
+            ax.annotate(f'{width:.2f}', 
+                        xy=(width, bar.get_y() + bar.get_height() / 2),
+                        xytext=(3, 0),
+                        textcoords="offset points",
+                        ha='left', va='center',
+                        color='white')
+
+        for bar in bars_desviacion:
+            width = bar.get_width()
+            ax.annotate(f'{width:.2f}', 
+                        xy=(bar.get_x() + width, bar.get_y() + bar.get_height() / 2),
+                        xytext=(3, 0),  
+                        textcoords="offset points",
+                        ha='left', va='center',
+                        color='black')
+
+        ax.set_xlabel(media.capitalize())
+        ax.set_ylabel('Evento')
+        ax.set_title(f'Media y Desviación Estándar de {media.capitalize()} por Evento')
+        ax.grid(axis='x')
+        ax.legend()
+
+        st.pyplot(fig)
 
     def grafico_burbujas(self, data, variable1, variable2, variable3, variable4):
         st.subheader('Gráfico de Burbujas')
@@ -360,15 +393,18 @@ class AnalisisCircuitos:
     def similitudes(self, data, variable):
         data2, _ = self.get_media_pitstops()
         data = pd.merge(data, data2, on='Evento', how='inner')
+        
+        correlation = np.corrcoef(data[variable], data['Media_Pit_Stops'])[0, 1]
+        
         fig = px.scatter(data, x=variable, y='Media_Pit_Stops', color='Evento', size_max=30, hover_name='Evento')
 
         fig.update_layout(
-            title=f'Relación entre {variable} y Media Pit Stops',
+            title=f'Relación entre {variable} y Media Pit Stops (Correlación: {correlation:.2f})',
             xaxis_title=f'{variable}',
             yaxis_title='Media Pit Stops',
             paper_bgcolor='black',
             plot_bgcolor='black',   
-            font=dict(color='white')  
+            font=dict(color='white')
         )
 
         st.plotly_chart(fig)

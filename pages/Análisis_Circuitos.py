@@ -17,38 +17,32 @@ st.title("Análisis de Circuitos")
 
 def graficar_media_pit_stops():
     media_pit_stops, _ = anal_cir.get_media_pitstops()
-    anal_cir.grafica_barras(media_pit_stops, 'Media_Pit_Stops')
-    anal_cir.grafica_barras(media_pit_stops, 'Desviacion_Pit_Stops')
+    anal_cir.graficar_media_y_desviacion(media_pit_stops, 'Media_Pit_Stops', 'Desviacion_Pit_Stops')   
 
 def graficar_adelantamientos():
     adelantamientos, _ = anal_cir.get_adelantamientos()
-    anal_cir.grafica_barras(adelantamientos, 'Adelantamientos')
-    anal_cir.grafica_barras(adelantamientos, "Desviacion_Adelantamientos")
+    anal_cir.graficar_media_y_desviacion(adelantamientos, 'Adelantamientos', 'Desviacion_Adelantamientos')
     anal_cir.similitudes(adelantamientos, 'Adelantamientos')
 
 def graficar_tiempo_parada():
     tiempo_parada, _ = anal_cir.get_tiempo_parada()
-    anal_cir.grafica_barras(tiempo_parada, 'Media_Tiempo_Parada')
-    anal_cir.grafica_barras(tiempo_parada, "Desviacion_Tiempo_Parada")
+    anal_cir.graficar_media_y_desviacion(tiempo_parada, 'Media_Tiempo_Parada', 'Desviacion_Tiempo_Parada')
     anal_cir.similitudes(tiempo_parada, 'Media_Tiempo_Parada')
 
 def graficar_tiempo_vuelta():
     tiempo_por_vuelta, _ = anal_cir.get_tiempo_por_vuelta()
-    anal_cir.grafica_barras(tiempo_por_vuelta, 'Tiempo_medio')
-    anal_cir.grafica_barras(tiempo_por_vuelta, "Desviacion_tiempo_medio")
+    anal_cir.graficar_media_y_desviacion(tiempo_por_vuelta, 'Tiempo_medio', 'Desviacion_tiempo_medio')
     anal_cir.similitudes(tiempo_por_vuelta, 'Tiempo_medio')
 
 def graficar_velocidad_media():
     velocidad_media, _ = anal_cir.get_velocidad_media()
-    anal_cir.grafica_barras(velocidad_media, 'Velocidad_media')
-    anal_cir.grafica_barras(velocidad_media, "Desviacion_velocidad_media")
+    anal_cir.graficar_media_y_desviacion(velocidad_media, 'Velocidad_media', 'Desviacion_velocidad_media')
     anal_cir.similitudes(velocidad_media, 'Velocidad_media')
 
 def graficar_safety_veces():
     safety_veces, _ = anal_cir.get_safety_veces()
     safety_veces.rename(columns = {'Race': 'Evento'}, inplace = True)
-    anal_cir.grafica_barras(safety_veces, 'Safety_Veces')
-    anal_cir.grafica_barras(safety_veces, "Safety_Veces_Desviacion")
+    anal_cir.graficar_media_y_desviacion(safety_veces, 'Safety_Veces', 'Safety_Veces_Desviacion')
     anal_cir.similitudes(safety_veces, 'Safety_Veces')
 
 def graficar_degradacion():
