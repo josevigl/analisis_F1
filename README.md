@@ -4,7 +4,7 @@ This is a Streamlit dashboard for interactive analysis and visualization of Form
 
 ## Execution
 
-To run the application, you must install the necessary packages by opening a terminal and typing "pip install -r requirements.txt". After that, type the following "streamlit run .\Predicción.py". A browser window with the application will open. It may take a little while to load the data, so please wait until it finishes loading.
+To run the application, you must install the necessary packages by opening a terminal and typing "pip install -r requirements.txt". It is advisable to create a virtual enviroment before. After that, type the following "streamlit run .\Predicción.py". A browser window with the application will open. It may take a little while to load the data, so please wait until it finishes loading.
 
 Please note that this has been run on version 3.11.1, so if you have a different version, there may be compatibility issues.
 
